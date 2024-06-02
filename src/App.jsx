@@ -1,33 +1,19 @@
-import "./App.css"
 import { useState } from "react";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
 
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(true);
 
-  const handleUserName = (e) => {
-    setUserName(e.target.value);
-  }
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
-
-  const handleData = () => {
-    console.log({userName, password});
-  }
-
-  return(
-    <div className="page">
-      <div>
-        <h1>Sign In page</h1>
-        <input type="text" placeholder="Username" className="loginInput" value={userName} onChange={(e) => handleUserName(e)} />
-        <input type="password" placeholder="Password" className="loginInput" value={password} onChange={(e) => handlePassword(e)} />
-        <button className="loginBtn" onClick={handleData}>Sign In</button>
-      </div>
+  return ( 
+    <div>
+      <button onClick={() => setLogin(!login)}>
+        {login ? "SignUp" : "SignIn"}
+      </button>
+      {login === true ? <SignUp /> : <SignIn />}
     </div>
-  )
+   );
 }
-
+ 
 export default App;
